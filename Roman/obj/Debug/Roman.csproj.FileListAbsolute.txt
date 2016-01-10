@@ -1,0 +1,6 @@
+C:\Users\Baby Blue\Documents\GitHub\JuniorMindLoops\Roman\obj\Debug\Roman.csprojResolveAssemblyReference.cache
+C:\Users\Baby Blue\Documents\GitHub\JuniorMindLoops\Roman\bin\Debug\Roman.dll
+C:\Users\Baby Blue\Documents\GitHub\JuniorMindLoops\Roman\bin\Debug\Roman.pdb
+C:\Users\Baby Blue\Documents\GitHub\JuniorMindLoops\Roman\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Baby Blue\Documents\GitHub\JuniorMindLoops\Roman\obj\Debug\Roman.dll
+C:\Users\Baby Blue\Documents\GitHub\JuniorMindLoops\Roman\obj\Debug\Roman.pdb
