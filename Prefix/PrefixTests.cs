@@ -9,25 +9,28 @@ namespace Prefix
         [TestMethod]
         public void ThreeCompareTest()
         {
-            Assert.AreEqual("aaa", ComparePrefix("aaabbcbcbc", "aaajfjfjfjf", 3));
+            Assert.AreEqual("aaa", ComparePrefix("aaabbcbcbc", "aaajfjfjfjf"));
         }
         [TestMethod]
         public void FourCompareTest()
         {
-            Assert.AreEqual("aaab", ComparePrefix("aaabbcbcbc", "aaabjfjfjfjf", 4));
+            Assert.AreEqual("aaab", ComparePrefix("aaabbcbcbc", "aaabjfjfjfjf"));
         }
-        string ComparePrefix(string firstString, string secondString, int n)
+        [TestMethod]
+        public void PrefixCompareTest()
         {
-            string firstPrefix = firstString.Substring(0, n);
-            string secondPrefix = secondString.Substring(0, n);
-            while (firstString.Length > n && secondString.Length > n)
+            Assert.AreEqual("tele", ComparePrefix("telefon", "televizor"));
+        }
+        string ComparePrefix(string firstString, string secondString)
+        {
+            int prefixLenght = 0;
+            for (int i = 0; i < Math.Min(firstString.Length, secondString.Length); i++)
             {
-                if (firstPrefix.Equals(secondPrefix))
-                {
-                    return firstPrefix;
-                }
+                if (firstString[i] != secondString[i])
+                    break;
+                prefixLenght++;
             }
-            return secondPrefix;
+            return firstString.Substring(0, prefixLenght);
         }
     }
 }
