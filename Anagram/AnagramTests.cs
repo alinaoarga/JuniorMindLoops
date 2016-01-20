@@ -21,22 +21,57 @@ namespace Anagram
         {
             Assert.AreEqual(24, CalculateAnagram("abcd"));
         }
+        [TestMethod]
+        public void FactorialForThreeTest()
+        {
+            Assert.AreEqual(6, CalculateFactorial(3));
+        }
+        [TestMethod]
+        public void FactorialForFourTest()
+        {
+            Assert.AreEqual(24, CalculateFactorial(4));
+        }
+        [TestMethod]
+        public void AnagramRepetTest()
+        {
+            Assert.AreEqual(3, CalculateAnagram("aab"));
+        }
+        [TestMethod]
+        public void AnagramAlinTest()
+        {
+            Assert.AreEqual(24, CalculateAnagram("Alin"));
+        }
+        [TestMethod]
+        public void AnagramAlinaTest()
+        {
+            Assert.AreEqual(60, CalculateAnagram("Alina"));
+        }
+        [TestMethod]
+        public void AnagramAndreiTest()
+        {
+            Assert.AreEqual(720, CalculateAnagram("Andrei"));
+        }
+        int CalculateFactorial(int number)
+        {
+            int fact = 1;
+            for (int i = 1; i <= number; i++)
+            {
+                fact = fact * i;
+            }
+            return fact;
+        }
         int CalculateAnagram(string word)
         {
-            int number = word.Length;
-            int total = 0;
-            while (number > 0)
+           
+            int common = 0;
+            for (int i = 0; i < word.Length; i++)
             {
-                for (int i = 0; i <= number; i++)
-                {
-                    number *= number * i;
-                    number++;
-                    total += 1;
-                    total++;
-                }
-
+                if (word[i].Equals(word[i]))
+                    break;
+                common++;
             }
-            return total;
+            int rez = CalculateFactorial(word.Length) / CalculateFactorial(common); 
+            return rez;
         }
     }
 }
