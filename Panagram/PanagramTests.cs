@@ -8,43 +8,61 @@ namespace Panagram
     {
 
         [TestMethod]
-        public void FirstPangramTest()
+        public void BoxPangramTest()
         {
             Assert.AreEqual(true, PanagramCheck("Pack my box with five dozen liquor jugs"));
         }
+
         [TestMethod]
-        public void SecondPangramTest()
+        public void AnaPangramTest()
         {
-            Assert.AreEqual(false, PanagramCheck("bla bla"));
-        }
-        [TestMethod]
-        public void ThirdPangramTest()
-        {
-            Assert.AreEqual(false, PanagramCheck("shfkjasjddvjdjjdjdjfjfjfjfjfjfjfjfjf"));
+            Assert.AreEqual(false, PanagramCheck("ana"));
         }
         [TestMethod]
         public void AllPangramTest()
         {
-            Assert.AreEqual(true, PanagramCheck("abcde fghijklmnopq rstuvwxyz"));
+            Assert.AreEqual(true, PanagramCheck(" We promptly judged antique ivory buckles for the next prize"));
         }
         [TestMethod]
         public void FoxPangramTest()
         {
             Assert.AreEqual(true, PanagramCheck("The quick brown fox jumps over the lazy dog"));
         }
-        bool PanagramCheck(string name)
+        [TestMethod]
+        public void JimPangramTest()
+        {
+            Assert.AreEqual(true, PanagramCheck("Jim quickly realized that the beautiful gowns are expensive"));
+        }
+        [TestMethod]
+        public void JockPangramTest()
+        {
+            Assert.AreEqual(true, PanagramCheck("Mr. Jock, TV quiz PhD, bags few lynx"));
+        }
+        [TestMethod]
+        public void LongPangramTest()
+        {
+            Assert.AreEqual(false, PanagramCheck("A pangram is a sentence that contains all letters of the alphabet"));
+        }
+
+        bool PanagramCheck(string word)
         {
             string alphabet = "abcdefghijklmnopqrstuvwxyz";
-            for (int i = 0; i < alphabet.Length; i++)
+
+            string lowName = word.ToLower();
+            char[] isUsed = new char[26];
+
+            int i = 0;
+            foreach (char letter in alphabet)
             {
-                int index = name.IndexOf(alphabet[i]);
-                if (index > alphabet.Length)
-                {
-                    return true;
-                }
+                isUsed[i] += letter;
+
+                if (lowName[i] == isUsed[i])
+                    break;
+                i++;
+                return true;
+
             }
             return false;
         }
-
     }
 }
