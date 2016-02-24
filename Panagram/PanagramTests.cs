@@ -47,22 +47,15 @@ namespace Panagram
         bool PanagramCheck(string word)
         {
             string alphabet = "abcdefghijklmnopqrstuvwxyz";
-
             string lowName = word.ToLower();
-            char[] isUsed = new char[26];
-
-            int i = 0;
             foreach (char letter in alphabet)
-            {
-                isUsed[i] += letter;
-
-                if (lowName[i] == isUsed[i])
-                    break;
-                i++;
-                return true;
-
-            }
-            return false;
+              if (!lowName.Contains(letter.ToString()))
+                    return false;
+            return true;
         }
     }
+
 }
+
+
+
