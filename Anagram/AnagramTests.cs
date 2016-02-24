@@ -32,7 +32,7 @@ namespace Anagram
             Assert.AreEqual(24, CalculateFactorial(4));
         }
         [TestMethod]
-        public void AnagramRepetTest()
+        public void AnagramRepeatTest()
         {
             Assert.AreEqual(3, CalculateAnagram("aab"));
         }
@@ -54,17 +54,17 @@ namespace Anagram
         [TestMethod]
         public void UniqueABCTest()
         {
-            Assert.AreEqual("abc", RemoveCharacters("aabbbcc"));
+            Assert.AreEqual("abc", GetUniqueCharacters("aabbbcc"));
         }
         [TestMethod]
         public void UniqueAlinaTest()
         {
-            Assert.AreEqual("Alina", RemoveCharacters("AAlinaaa"));
+            Assert.AreEqual("Alina", GetUniqueCharacters("AAlinaaa"));
         }
         [TestMethod]
         public void UniqueABCDTest()
         {
-            Assert.AreEqual("abcd", RemoveCharacters("aaaabbbccccdddddd"));
+            Assert.AreEqual("abcd", GetUniqueCharacters("aaaabbbccccdddddd"));
         }
         [TestMethod]
         public void CountATest()
@@ -115,7 +115,7 @@ namespace Anagram
 
             return count;
         }
-        string RemoveCharacters(string word)
+        string GetUniqueCharacters(string word)
         {
 
             string unique = "";
@@ -129,26 +129,20 @@ namespace Anagram
             }
             return unique;
         }
-       
         int CalculateAnagram(string word)
-        {
+          {
 
-            char[] letters = RemoveCharacters(word).ToCharArray();
-                int prod = 1;
-            
-            int[] array = new int[500];
-            int i = 0;
-           foreach (char letter in letters)
-            {
-                array [i] = CountOccurrence(word, letter);
               
-                if (array.Length > 1)
-                {
-                    prod *= CalculateFactorial(array[i]);
-                    i++;
-                }  
-           }
-            return CalculateFactorial(word.Length) / prod;
-        }
+              int prod = 1;
+              
+              foreach (char letter in GetUniqueCharacters(word))
+              {
+                   int count = CountOccurrence(word, letter);
+                      prod *= CalculateFactorial(count);
+              
+              }
+              return CalculateFactorial(word.Length) / prod;
+          } 
+     
     }
 }
