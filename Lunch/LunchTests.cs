@@ -7,27 +7,54 @@ namespace Lunch
     public class LunchTests
     {
         [TestMethod]
-        public void TrueMeetingTest()
+        public void LD1est()
         {
-            Assert.AreEqual(true, MeetingOccurrence(12));
+            Assert.AreEqual(2, CalculateLowestDenominator(2, 4));
         }
         [TestMethod]
-        public void FalseMeetingTest()
+        public void LD2est()
         {
-            Assert.AreEqual(false, MeetingOccurrence(16));
+            Assert.AreEqual(3, CalculateLowestDenominator(33, 75));
         }
         [TestMethod]
-        public void MeetingTest()
+        public void LCMTest()
         {
-            Assert.AreEqual(true, MeetingOccurrence(24));
+            Assert.AreEqual(6, CalculateLowestCommonMultilpe(2, 3));
         }
-        bool MeetingOccurrence(int day)
+        [TestMethod]
+        public void LCMT2est()
         {
-            if (day % 4 == 0 && day % 6 == 0)
+            Assert.AreEqual(4, CalculateLowestCommonMultilpe(2, 4));
+        }
+
+        int CalculateLowestDenominator(int a, int b)
+        {
+            while (a != b)
             {
-                return true;
+                if (a > b)
+                    a -= b;
+
+                if (b > a)
+                    b -= a;
             }
-            return false;
+            return a;
         }
+
+        int CalculateLowestCommonMultilpe(int a, int b)
+        {
+            return (a * b) / CalculateLowestDenominator(a, b);
+
+        }
+
     }
+   /* int MeetingOccurrence(int a, int b)
+    {
+
+        while (a % 4 == 0 && b % 6 == 0)
+        
+            return CalculateLowestCommonMultilpe(a, b);
+
+        
+    } */
 }
+
