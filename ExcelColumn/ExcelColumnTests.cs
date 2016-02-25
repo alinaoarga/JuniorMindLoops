@@ -21,6 +21,16 @@ namespace ExcelColumn
         {
             Assert.AreEqual("AA", ColumnNumberToColumnLetter(27));
         }
+        [TestMethod]
+        public void NumberToAZTest()
+        {
+            Assert.AreEqual("AZ", ColumnNumberToColumnLetter(52));
+        }
+        [TestMethod]
+        public void NumberToBATest()
+        {
+            Assert.AreEqual("BA", ColumnNumberToColumnLetter(53));
+        }
         string ColumnNumberToColumnLetter(int columnNumber)
         {
             string columnLetter = String.Empty;
@@ -28,9 +38,8 @@ namespace ExcelColumn
             while (columnNumber > 0)
             {
                 number = (columnNumber - 1) % 26;
-                columnNumber = columnNumber / 26;
-                columnLetter = Convert.ToChar(65 + number).ToString();
-
+                columnNumber = (columnNumber - 1) / 26;
+                columnLetter = Convert.ToChar(65 + number).ToString() + columnLetter;
             }
             return columnLetter;
         }
